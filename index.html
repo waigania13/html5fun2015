@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>html5fun</title>
+
+		<meta name="description" content="OSGeo.JP and html5fun資料">
+		<meta name="author" content="Kosuke ASAHI">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/serif.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style type="text/css">
+			div.white { background-color: rgba(0,0,0,0.5); color: #ffffff;}
+			h2.white {color: #ffffff;}
+		</style>
+		
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>一味違う地図をサイトに載せよう</h1>
+				</section>
+				
+				<section>
+					<section>
+						<h2>ABOUT ME</h2>
+						<p>
+						<h3>朝日 孝輔</h3>
+						<img src="img/asahi.jpg">
+						<p>
+						地理空間情報を扱うオープンソースソフトウェアのコミュニティ<br>
+						OSGeo財団日本支部 運営委員<br>
+						</p>
+						</p>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>本日の内容</h2>
+						<p>
+						webで地図を公開する際のサービスやライブラリを幾つかご紹介
+						<ul>
+						<li>Mapbox</li>
+						<li>CartoDB</li>
+						<li>Cesium</li>
+						</ul>
+						</p>
+					</section>
+					<section data-background-iframe="https://a.tiles.mapbox.com/v4/waigania13.o009pk6c/page.html?access_token=pk.eyJ1Ijoid2FpZ2FuaWExMyIsImEiOiI1M0x0YVlvIn0.3HMP0OFq6stNdTtwJMxYDA#13/42.3539/140.9670">
+						<h2>Mapbox</h2>
+					</section>
+					<section data-background-iframe="https://waigania13.cartodb.com/viz/d3b7db38-61e5-11e5-adce-0e4fddd5de28/embed_map">
+						<h2>CartoDB</h2>
+					</section>
+					<section data-background-iframe="https://waigania13.cartodb.com/viz/b8839f24-61e4-11e5-bcc4-0e9d821ea90d/embed_map">
+						<h2>CartoDB</h2>
+					</section>
+					<section data-background="img/cesium2.png">
+						<h2 class="white">Cesium</h2>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>説明の前に、ちょっとだけ</h2>
+					</section>
+					<section>
+						<h2>Google Map?</h2>
+						<div class="fragment">
+						Google Mapでも全然OKだよ
+						</div>
+						<div class="fragment">
+						ただし…
+						</div>
+						<div>
+						<ul>
+						<li class="fragment">ライセンス<br>
+						利用規約は読もうね、違反しちゃだめよ</li>
+						<li class="fragment">選択肢をいくつか知っておこう、オープンなもので作ろう</li>
+						<li class="fragment">折角なのでカッコいいサイトを作ろう</li>
+						</ul>
+						</div>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Mapbox</h2>
+						<div>
+						<a href="https://www.mapbox.com/" target="new">https://www.mapbox.com/</a>
+						</div>
+					</section>
+					<section>
+						<h2>Mapbox</h2>
+						<div>
+						地図を使ったアプリケーションを作成するためのプラットホーム
+						</div>
+						<div>
+						<ul>
+						<li>Mapboxのサイト上で地図のデザインを選択できます</li>
+						<li>カスタムツールを使ってオリジナルのデザインを作成できます</li>
+						<li>作成した地図の上にデータを配置できます</li>
+						<li>作成した地図を公開できます</li>
+						<li>JavaScript API,Android/iOS SDKから作成した地図を使用できます</li>
+						</ul>
+						</div>
+					</section>
+					<section data-background="img/mapbox1.png">
+						<div class="white">
+						ユーザ登録してプロジェクトを作成します<br>
+						最初に背景地図のスタイルを選択します<br>
+						背景地図のデータはOpenStreetMapが使われています
+						</div>
+					</section>
+					<section data-background="img/mapbox2.png">
+						<div class="white">
+						Marker,Line,Polygonをサイト上で配置できます<br>
+						geojson,kmlといったデータを予め用意してあれば<br>
+						それを読みこませることもできます
+						</div>
+					</section>
+					<section data-background="img/mapbox3.png">
+						<div class="white">
+						プロジェクトをSaveすると<br>
+						API/SDKのためのMap ID<br>
+						地図をシェアするためのURL<br>
+						サイトに組み込むためのコードが発行されます
+						</div>
+					</section>
+					<section data-background-iframe="https://a.tiles.mapbox.com/v4/waigania13.o009pk6c/page.html?access_token=pk.eyJ1Ijoid2FpZ2FuaWExMyIsImEiOiI1M0x0YVlvIn0.3HMP0OFq6stNdTtwJMxYDA#13/42.3539/140.9670">
+						<div>
+						<a href="https://www.mapbox.com/" target="new">DEMO</a>
+						</div>
+					</section>
+					<section data-background="img/mapbox4.png">
+						<div class="white">
+						Turfとか注目されています
+						</div>
+					</section>
+					<section>
+						<div>
+						<h3>プログラマの方は<br>Mapboxのgithubは要チェック</h3>
+						<a href="https://github.com/mapbox" target="new">https://github.com/mapbox</a>
+						</div>
+					</section>
+					<section data-background="img/mapbox5.png">
+						<div class="white">
+						まずは無料プランで試してみましょう
+						</div>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>CartoDB</h2>
+						<div>
+						<a href="https://cartodb.com/" target="new">https://cartodb.com/</a>
+						</div>
+					</section>
+					<section>
+						<h2>CartoDB</h2>
+						<div>
+						地図を使ったアプリケーションを作成するためのプラットホーム
+						</div>
+						<div>
+						<ul>
+						<li>CartoDBにデータをアップロードして、さまざまな表現を付けられます</li>
+						<li>データの編集もCartoDB上で行えます</li>
+						<li>データをどのように表示・表現すべきか提案してくれたります</li>
+						<li>作成した地図を公開できます</li>
+						<li>APIを通して作成したデータを使用できます</li>
+						</ul>
+						</div>
+					</section>
+					<section data-background="img/cartodb1.png">
+						<div class="white">
+						ユーザ登録してDATASETを作成します<br>
+						手持ちのcsv、geojson、kmlなどがあればアップロードできます<br>
+						位置情報を持っている必要はあります
+						</div>
+					</section>
+					<section data-background="img/cartodb2.png">
+						<div class="white">
+						MAPVIEWでデータを地図上に展開できます<br>
+						用意されている背景地図を選択できます<br>
+						タイル地図ならURLを指定して背景に指定もできます<br>
+						Map Layer Wizardで簡単にDATASETの表現付もできます
+						</div>
+					</section>
+					<section data-background="img/cartodb3.png">
+						<div class="white">
+						MAPをPUBLISHすると<br>
+						地図をシェアするためのURL<br>
+						サイトに組み込むためのコードが発行されます
+						</div>
+					</section>
+					<section data-background-iframe="https://waigania13.cartodb.com/viz/d3b7db38-61e5-11e5-adce-0e4fddd5de28/embed_map">
+						<div>
+						<a href="https://cartodb.com/" target="new">DEMO</a>
+						</div>
+					</section>
+					<section data-background="img/cartodb4.png">
+						<div class="white">
+						Torqueとか注目されています
+						</div>
+					</section>
+					<section>
+						<div>
+						<h3>プログラマの方は<br>CartoDBのgithubは要チェック</h3>
+						<a href="https://github.com/CartoDB" target="new">https://github.com/CartoDB</a>
+						</div>
+					</section>
+					<section data-background="img/cartodb5.png">
+						<div class="white">
+						まずは無料プランで試してみましょう
+						</div>
+					</section>
+					<section data-background="img/chizudb.png">
+						<div class="white">
+						Pacific Spatial Solutionsが、<br>
+						CartoDBを日本語化してくれています<br>
+						こちらもお試し下さい
+						</div>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>Cesium</h2>
+						<div>
+						<a href="http://cesiumjs.org/" target="new">http://cesiumjs.org/</a>
+						</div>
+					</section>
+					<section>
+						<h2>Cesium</h2>
+						<div>
+						2D,3Dのバーチャル地球儀を作成するJavaScriptライブラリです<br>
+						WebGLを使用しています
+						</div>
+					</section>
+				
+					<section>
+						cesiumをリンクして
+						<pre><code data-trim contenteditable>
+<script src="https://cesiumjs.org/Cesium/Build/Cesium/Cesium.js"></script>
+<link href="https://cesiumjs.org/Cesium/Build/Cesium/Widgets/widgets.css" rel="stylesheet" />
+						</code></pre>
+						viewerを作成、カメラ位置を移動します
+						<pre><code data-trim contenteditable>						
+var viewer = new Cesium.Viewer('cesiumContainer');
+viewer.scene.camera.flyTo({
+	destination : new Cesium.Cartesian3.fromDegrees(141.024902, 42.359777, 10000.0)
+});
+						</code></pre>
+					</section>
+					
+					<section>
+						データを読み込みましょう
+						<pre><code data-trim contenteditable>
+var dataSource = new Cesium.GeoJsonDataSource();
+dataSource.load('./aed.geojson');
+viewer.dataSources.add(dataSource);
+						</code></pre>
+						DEMO
+					</section>
+
+					<section>
+						国土地理院の地図に変更しよう
+						<pre><code data-trim contenteditable>
+var viewer = new Cesium.Viewer('cesiumContainer', {
+	imageryProvider: new Cesium.OpenStreetMapImageryProvider({
+		url: 'http://cyberjapandata.gsi.go.jp/xyz/std/',
+		credit: new Cesium.Credit('地理院タイル', '', 'http://maps.gsi.go.jp/development/ichiran.html')
+	}),
+	baseLayerPicker: false
+});
+						</code></pre>
+						DEMO
+					</section>
+
+					<section>
+						地形データを読み込もう
+						<pre><code data-trim contenteditable>
+var terrainProvider = new Cesium.CesiumTerrainProvider({
+	url : '//assets.agi.com/stk-terrain/world',
+	requestVertexNormals: true
+});
+viewer.terrainProvider = terrainProvider;
+viewer.scene.globe.enableLighting = true;
+						</code></pre>
+						DEMO
+					</section>
+
+					<section>
+						3Dモデルを配置できます
+						<pre><code data-trim contenteditable>
+var scene = viewer.scene;
+var modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(
+	Cesium.Cartesian3.fromDegrees(141.024902, 42.359777, 0.0)
+);
+var model = scene.primitives.add(
+	Cesium.Model.fromGltf({
+		url : './CesiumMilkTruck.gltf',
+		modelMatrix : modelMatrix,
+		scale : 200.0
+	})
+);
+						</code></pre>
+						DEMO
+					</section>
+					<section data-background="img/cesium.png">
+						<div class="white">
+						DEMOをチェックしてみてください
+						<a href="http://cesiumjs.org/demos.html" target="new">http://cesiumjs.org/demos.html</a>
+						</div>
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<h2>OSGeo.JP</h2>
+						<div>
+						OSGeo財団（The Open Source Geospatial Foundation）は、高品質のオープンソース地理空間ソフトウェアの支援と構築のために設立されました。<br>
+						この財団の目的は、コミュニティーが先導し て、オープンソースプロジェクトの利用と開発を促進することです。OSGeo財団の日本における公式の支部が「OSGeo財団日本支部 （OSGeo.JP）」です。
+						</div>
+					</section>
+					<section data-background="img/poster2.png"  data-background-size="50%">
+					</section>
+					<section data-background="img/poster1.png"  data-background-size="50%">
+					</section>
+					<section>
+						<h2>OSGeo.JPの活動</h2>
+						<div>
+						大きな活動としては年3回カンファレンスを開催しています<br>
+						間近だと大阪で11/21(土)
+						</div>
+						<div>
+						<ul>
+						<li>FOSS4G Hokkaido 6-7月頃</li>
+						<li>FOSS4G Tokyo 11月頃</li>
+						<li>FOSS4G Osaka 11月頃</li>
+						</ul>
+						</div>
+					</section>
+				</section>
+				
+				<section>
+					<img src="img/qgis.png">
+					<div>
+					地理空間情報面白そうと思った方は手にとってみてください<br>
+					今日扱わなかった、面倒くさいところのお話になります
+					</div>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+				overview: true,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
